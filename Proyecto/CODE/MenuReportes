@@ -1,1 +1,119 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proyectoFundamento;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+/**
+ * Clase MenuReportes para generar y guardar reportes.
+ */
+public class MenuReportes extends javax.swing.JFrame {
+
+    private JTextArea textAreaReport;
+    private JButton btnGenerate, btnSave, btnBack;
+
+    public MenuReportes() {
+        initComponents();
+    }
+
+    private void initComponents() {
+        setTitle("Generador de Reportes");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(700, 500);
+        setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel();
+        panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK), "Reportes", 0, 0, new Font("Dialog", Font.BOLD, 18)));
+        panel.setLayout(new BorderLayout());
+
+        textAreaReport = new JTextArea();
+        textAreaReport.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textAreaReport);
+
+        JPanel buttonPanel = new JPanel();
+        btnGenerate = new JButton("Generar Reporte");
+        btnSave = new JButton("Guardar Reporte");
+        btnBack = new JButton("Regresar");
+
+        buttonPanel.add(btnGenerate);
+        buttonPanel.add(btnSave);
+        buttonPanel.add(btnBack);
+
+        panel.add(scrollPane, BorderLayout.CENTER);
+        panel.add(buttonPanel, BorderLayout.SOUTH);
+
+        add(panel);
+
+        // Listeners para los botones
+        btnGenerate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                generateReport();
+            }
+        });
+
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saveReport();
+            }
+        });
+
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                backToMenu();
+            }
+        });
+    }
+
+    private void generateReport() {
+        // Simulación de datos obtenidos de MenuClientes y MenuPedidos
+        String clientData = "Clientes:\n- Nombre: Juan Perez\n- Dirección: Calle Falsa 123\n- Teléfono: 0987654321\n\n";
+        String orderData = "Pedidos:\n- Plato: Pollo a la parrilla\n- Precio: $14.00\n- IVA: $2.10\n- Total: $16.10\n";
+
+        String report = clientData + orderData;
+        textAreaReport.setText(report);
+    }
+
+    private void saveReport() {
+        String reportContent = textAreaReport.getText();
+
+        if (reportContent.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay datos para guardar.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        JFileChooser fileChooser = new JFileChooser();
+        int option = fileChooser.showSaveDialog(this);
+
+        if (option == JFileChooser.APPROVE_OPTION) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile()))) {
+                writer.write(reportContent);
+                JOptionPane.showMessageDialog(this, "Reporte guardado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Error al guardar el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void backToMenu() {
+        this.setVisible(false);
+        MenuPrincipal mainMenu = new MenuPrincipal();
+        mainMenu.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new MenuReportes().setVisible(true);
+        });
+    }
+}

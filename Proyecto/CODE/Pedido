@@ -1,0 +1,53 @@
+/*
+                UNIVERSIDAD-DE-LAS-FUERZAS-ARMADAS-ESPE
+                    CARRERA:INGENIERIA EN SOFTWARE
+Integrantes:ANDRADE URIEL, MATIAS JEAN, PLUA THOMAS     PERIODO:202451
+ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
+FECHA: 18/01/2025
+Tema: Clase Pedido
+*/
+package proyectoFundamento;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Pedido {
+
+    private Set<String> platillos;
+    private String tipoPago;
+
+    public Pedido(Set<String> platillos, String tipoPago) {
+        this.platillos = new HashSet<>(platillos);
+        this.tipoPago = tipoPago;
+    }
+
+    public Set<String> getPlatillos() {
+        return platillos;
+    }
+
+    public String getTipoPago() {
+        return tipoPago;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{"
+                + "platillos=" + getPlatillos()
+                + ", tipoPago='" + getTipoPago() + '\''
+                + '}';
+    }
+
+    /**
+     * @param platillos the platillos to set
+     */
+    public void setPlatillos(Set<String> platillos) {
+        this.platillos = platillos;
+    }
+
+    /**
+     * @param tipoPago the tipoPago to set
+     */
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+}

@@ -1,7 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+                UNIVERSIDAD-DE-LAS-FUERZAS-ARMADAS-ESPE
+                    CARRERA:INGENIERIA EN SOFTWARE
+Integrantes:ANDRADE URIEL, MATIAS JEAN, PLUA THOMAS     PERIODO:202451
+ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
+FECHA: 18/01/2025
+Tema: Menu Principal
+*/
 package proyectoFundamento;
 
 import javax.swing.*;
@@ -9,9 +13,9 @@ import javax.swing.*;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     //atributos 
-    private final MenuClientes menuClientes; // Instancia compartida de MenuClientes
-    private final MenuPedidos menuPedidos; // Instancia compartida de MenuPedidos
-    private final MenuReporte menuReporte;
+    private MenuClientes menuClientes; // Instancia compartida de MenuClientes
+    private MenuPedidos menuPedidos; // Instancia compartida de MenuPedidos
+    private MenuReporte menuReporte;
 
     /**
      * Creates new form MenuPrincipal
@@ -22,7 +26,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         this.menuClientes = new MenuClientes(this); // Crear las instancias al iniciar
         this.menuPedidos = new MenuPedidos(this);
-        this.menuReporte = new MenuReporte(menuClientes, menuPedidos, this);
+        this.menuReporte = new MenuReporte(getMenuClientes(), getMenuPedidos(), this);
 
         initComponents();
     }
@@ -143,7 +147,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void OpcionActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-        Aceptar.doClick(); //Al dar enter en el campo de Opcion se cliclea automaticamente el boton aceptar, ejecutando el metodo AceptarActionPerformed
+        getAceptar().doClick(); //Al dar enter en el campo de Opcion se cliclea automaticamente el boton aceptar, ejecutando el metodo AceptarActionPerformed
     }                                      
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {                                        
@@ -151,27 +155,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //BOTON Aceptar
         //Manejo de try catch para evitar la entrada de numeros
         try {
-            switch (Integer.parseInt(this.Opcion.getText())) {
+            switch (Integer.parseInt(this.getOpcion().getText())) {
                 case 1 -> {
-                    menuPedidos.setVisible(true);
+                    getMenuPedidos().setVisible(true);
                     this.setVisible(false);
                 }
                 case 2 -> {
-                    menuClientes.setVisible(true);
+                    getMenuClientes().setVisible(true);
                     this.setVisible(false);
                 }
                 case 3 -> {
-                    menuReporte.setVisible(true);
+                    getMenuReporte().setVisible(true);
                     this.setVisible(false);
                 }
                 default -> {
                     JOptionPane.showMessageDialog(this, "Opcion no valida, ingrese una opcion entre el 1 y 3 ", "Opcion Invalida", JOptionPane.WARNING_MESSAGE);
                 }
             }
-            Opcion.setText("");
+            getOpcion().setText("");
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Opcion no valida", "Entrada Invalida", JOptionPane.ERROR_MESSAGE);
-            Opcion.setText("");
+            getOpcion().setText("");
         }
     }                                       
 
@@ -200,7 +204,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -219,4 +223,158 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration                   
+
+    /**
+     * @return the menuClientes
+     */
+    public MenuClientes getMenuClientes() {
+        return menuClientes;
+    }
+
+    /**
+     * @param menuClientes the menuClientes to set
+     */
+    public void setMenuClientes(MenuClientes menuClientes) {
+        this.menuClientes = menuClientes;
+    }
+
+    /**
+     * @return the menuPedidos
+     */
+    public MenuPedidos getMenuPedidos() {
+        return menuPedidos;
+    }
+
+    /**
+     * @param menuPedidos the menuPedidos to set
+     */
+    public void setMenuPedidos(MenuPedidos menuPedidos) {
+        this.menuPedidos = menuPedidos;
+    }
+
+    /**
+     * @return the menuReporte
+     */
+    public MenuReporte getMenuReporte() {
+        return menuReporte;
+    }
+
+    /**
+     * @param menuReporte the menuReporte to set
+     */
+    public void setMenuReporte(MenuReporte menuReporte) {
+        this.menuReporte = menuReporte;
+    }
+
+    /**
+     * @return the Aceptar
+     */
+    public javax.swing.JButton getAceptar() {
+        return Aceptar;
+    }
+
+    /**
+     * @param Aceptar the Aceptar to set
+     */
+    public void setAceptar(javax.swing.JButton Aceptar) {
+        this.Aceptar = Aceptar;
+    }
+
+    /**
+     * @return the Opcion
+     */
+    public javax.swing.JTextField getOpcion() {
+        return Opcion;
+    }
+
+    /**
+     * @param Opcion the Opcion to set
+     */
+    public void setOpcion(javax.swing.JTextField Opcion) {
+        this.Opcion = Opcion;
+    }
+
+    /**
+     * @return the Salir
+     */
+    public javax.swing.JButton getSalir() {
+        return Salir;
+    }
+
+    /**
+     * @param Salir the Salir to set
+     */
+    public void setSalir(javax.swing.JButton Salir) {
+        this.Salir = Salir;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @param jLabel1 the jLabel1 to set
+     */
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @param jLabel2 the jLabel2 to set
+     */
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    /**
+     * @return the jLabel3
+     */
+    public javax.swing.JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    /**
+     * @param jLabel3 the jLabel3 to set
+     */
+    public void setjLabel3(javax.swing.JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    /**
+     * @return the jLabel4
+     */
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    /**
+     * @param jLabel4 the jLabel4 to set
+     */
+    public void setjLabel4(javax.swing.JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    /**
+     * @param jPanel1 the jPanel1 to set
+     */
+    public void setjPanel1(javax.swing.JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
 }

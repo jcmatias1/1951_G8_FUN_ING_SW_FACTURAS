@@ -1,14 +1,23 @@
+/*
+                UNIVERSIDAD-DE-LAS-FUERZAS-ARMADAS-ESPE
+                    CARRERA:INGENIERIA EN SOFTWARE
+Integrantes:ANDRADE URIEL, MATIAS JEAN, PLUA THOMAS     PERIODO:202451
+ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
+FECHA: 18/01/2025
+Tema: Clase Cliente
+*/
 package proyectoFundamento;
 
 public class Cliente {
+
     //atributos del cliente
-    private final String nombre;
-    private final String apellido;
-    private final String direccion;
-    private final String correo;
-    private final String identificacion;
-    private final String tipoIdentificacion;
-    private final String telefono;
+    private String nombre;
+    private String apellido;
+    private String direccion;
+    private String correo;
+    private String identificacion;
+    private String tipoIdentificacion;
+    private String telefono;
 
     // Constructor
     public Cliente(String nombre, String apellido, String direccion, String correo, String identificacion, String tipoIdentificacion, String telefono) {
@@ -54,11 +63,60 @@ public class Cliente {
     public String toString() {
         return """
                ---Cliente---
-               -Nombre: """ + nombre
-                + "\n-Apellido: " + apellido
-                + "\n-Dirección: " + direccion
-                + "\n-Correo: " + correo
-                + "\n-Tipo: " + tipoIdentificacion + "\tIdentificacion: " + identificacion
-                + "\n-Teléfono: " + telefono;
+               -Nombre: """ + getNombre()
+                + "\n-Apellido: " + getApellido()
+                + "\n-Dirección: " + getDireccion()
+                + "\n-Correo: " + getCorreo()
+                + "\n-Tipo: " + getTipoIdentificacion() + "\tIdentificacion: " + getIdentificacion()
+                + "\n-Teléfono: " + getTelefono();
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @param apellido the apellido to set
+     */
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    /**
+     * @param direccion the direccion to set
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    /**
+     * @param correo the correo to set
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * @param identificacion the identificacion to set
+     */
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    /**
+     * @param tipoIdentificacion the tipoIdentificacion to set
+     */
+    public void setTipoIdentificacion(String tipoIdentificacion) {
+        this.tipoIdentificacion = tipoIdentificacion;
+    }
+
+    /**
+     * @param telefono the telefono to set
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

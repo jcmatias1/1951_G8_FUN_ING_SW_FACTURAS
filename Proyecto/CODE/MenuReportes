@@ -1,11 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */ 
+                UNIVERSIDAD-DE-LAS-FUERZAS-ARMADAS-ESPE
+                    CARRERA:INGENIERIA EN SOFTWARE
+Integrantes:ANDRADE URIEL, MATIAS JEAN, PLUA THOMAS     PERIODO:202451
+ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
+FECHA: 18/01/2025
+Tema: Ventana Reportes 
+*/
 package proyectoFundamento;
 
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -19,8 +22,9 @@ import javax.swing.JOptionPane;
 public class MenuReporte extends javax.swing.JFrame {
 
     //atributos 
-    private final MenuPrincipal menuPrincipal;
-    private final MenuClientes menuClientes;
+    private MenuPrincipal menuPrincipal;
+    private MenuClientes menuClientes;
+    private MenuPedidos menuPedidos;
 
     /**
      * Creates new form MenuReportes
@@ -30,13 +34,15 @@ public class MenuReporte extends javax.swing.JFrame {
      * @param menuPrincipal
      */
     public MenuReporte(MenuClientes menuClientes, MenuPedidos menuPedidos, MenuPrincipal menuPrincipal) {
-        this.setTitle("Generador de Reportes");
+        this.setTitle("Generador de Reportes");// titulo de la ventana 
 
+        //inicializacion de las clases tipo objeto
         this.menuPrincipal = menuPrincipal;
         this.menuClientes = menuClientes;
+        this.menuPedidos = menuPedidos;
 
+        // llamada del metodo de la ventana 
         initComponents();
-
     }
 
     /**
@@ -138,22 +144,48 @@ public class MenuReporte extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void botonGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        // TODO add your handling code here:
-        //boton Generar reporte
-        List<Cliente> clientes = menuClientes.getClientes();
-        System.out.println("Clientes actuales: " + clientes); // Depuración
-
+        // Botón Generar reporte
+        List<Cliente> clientes = getMenuClientes().getClientes();
         if (clientes.isEmpty()) {
-            jTextArea1.setText("No hay clientes registrados.");
+            getjTextArea1().setText("No hay clientes registrados.".toUpperCase());
             return;
         }
 
-        StringBuilder reporte = new StringBuilder("Reporte de Clientes:\n\n");
+        StringBuilder reporte = new StringBuilder("-------Reporte de Clientes y Pedidos-------\n\n".toUpperCase());
+        int pedidoIndex = 0;
+
         for (Cliente cliente : clientes) {
-            reporte.append(cliente).append("\n\n");
+            reporte.append("--- Cliente ---\n")
+                    .append("- Nombre: ").append(cliente.getNombre().toUpperCase()).append("\n")
+                    .append("- Apellido: ").append(cliente.getApellido().toUpperCase()).append("\n")
+                    .append("- Dirección: ").append(cliente.getDireccion().toUpperCase()).append("\n")
+                    .append("- Correo: ").append(cliente.getCorreo().toUpperCase()).append("\n")
+                    .append("- Tipo: ").append(cliente.getTipoIdentificacion().toUpperCase()).append("\tIdentificación: ").append(cliente.getIdentificacion()).append("\n")
+                    .append("- Teléfono: ").append(cliente.getTelefono().toUpperCase()).append("\n\n");
+
+            if (pedidoIndex < getMenuPedidos().getListaPedidos().size()) {
+                Pedido pedido = (Pedido) getMenuPedidos().getListaPedidos().get(pedidoIndex);
+                reporte.append("---- Reporte del Pedido ----\n".toUpperCase());
+                reporte.append("Tipo de pago: ".toUpperCase()).append(pedido.getTipoPago().toUpperCase()).append("\n");
+                double total = 0.0;
+                for (String nombrePlatillo : pedido.getPlatillos()) {
+                    double precio = getMenuPedidos().getPlatos().get(nombrePlatillo);
+                    reporte.append("- ").append(nombrePlatillo.toUpperCase()).append(": $").append(precio).append("\n");
+                    total += precio;
+                }
+                double totalConIVA = Math.round(total * 1.15 * 100.0) / 100.0;
+                reporte.append("----------------------------\n")
+                        .append("Total a pagar: $".toUpperCase()).append(total).append("\n")
+                        .append("Total con IVA: $".toUpperCase()).append(totalConIVA).append("\n\n")
+                        .append("----------------------------\n");
+                pedidoIndex++;
+            } else {
+                reporte.append("No hay pedidos para este cliente.\n\n".toUpperCase());
+            }
         }
 
-        jTextArea1.setText(reporte.toString());
+        getjTextArea1().setText(reporte.toString());
+
     }                                                   
 
     private void botonGuardarReporteActionPerformed(java.awt.event.ActionEvent evt) {                                                    
@@ -164,7 +196,7 @@ public class MenuReporte extends javax.swing.JFrame {
 
     //metodo para guardar reporte
     private void guardarReporte() {
-        String reportContent = this.jTextArea1.getText();
+        String reportContent = this.getjTextArea1().getText();
 
         if (reportContent.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay datos para guardar.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -188,7 +220,7 @@ public class MenuReporte extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Boton Regresar
         this.setVisible(false);
-        this.menuPrincipal.setVisible(true);
+        this.getMenuPrincipal().setVisible(true);
     }                                             
 
     /**
@@ -223,4 +255,130 @@ public class MenuReporte extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration                   
+
+    /**
+     * @return the menuPrincipal
+     */
+    public MenuPrincipal getMenuPrincipal() {
+        return menuPrincipal;
+    }
+
+    /**
+     * @param menuPrincipal the menuPrincipal to set
+     */
+    public void setMenuPrincipal(MenuPrincipal menuPrincipal) {
+        this.menuPrincipal = menuPrincipal;
+    }
+
+    /**
+     * @return the menuClientes
+     */
+    public MenuClientes getMenuClientes() {
+        return menuClientes;
+    }
+
+    /**
+     * @param menuClientes the menuClientes to set
+     */
+    public void setMenuClientes(MenuClientes menuClientes) {
+        this.menuClientes = menuClientes;
+    }
+
+    /**
+     * @return the menuPedidos
+     */
+    public MenuPedidos getMenuPedidos() {
+        return menuPedidos;
+    }
+
+    /**
+     * @param menuPedidos the menuPedidos to set
+     */
+    public void setMenuPedidos(MenuPedidos menuPedidos) {
+        this.menuPedidos = menuPedidos;
+    }
+
+    /**
+     * @return the botonGenerarReporte
+     */
+    public javax.swing.JButton getBotonGenerarReporte() {
+        return botonGenerarReporte;
+    }
+
+    /**
+     * @param botonGenerarReporte the botonGenerarReporte to set
+     */
+    public void setBotonGenerarReporte(javax.swing.JButton botonGenerarReporte) {
+        this.botonGenerarReporte = botonGenerarReporte;
+    }
+
+    /**
+     * @return the botonGuardarReporte
+     */
+    public javax.swing.JButton getBotonGuardarReporte() {
+        return botonGuardarReporte;
+    }
+
+    /**
+     * @param botonGuardarReporte the botonGuardarReporte to set
+     */
+    public void setBotonGuardarReporte(javax.swing.JButton botonGuardarReporte) {
+        this.botonGuardarReporte = botonGuardarReporte;
+    }
+
+    /**
+     * @return the botonRegresar
+     */
+    public javax.swing.JButton getBotonRegresar() {
+        return botonRegresar;
+    }
+
+    /**
+     * @param botonRegresar the botonRegresar to set
+     */
+    public void setBotonRegresar(javax.swing.JButton botonRegresar) {
+        this.botonRegresar = botonRegresar;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    /**
+     * @param jPanel1 the jPanel1 to set
+     */
+    public void setjPanel1(javax.swing.JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @param jScrollPane1 the jScrollPane1 to set
+     */
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    /**
+     * @return the jTextArea1
+     */
+    public javax.swing.JTextArea getjTextArea1() {
+        return jTextArea1;
+    }
+
+    /**
+     * @param jTextArea1 the jTextArea1 to set
+     */
+    public void setjTextArea1(javax.swing.JTextArea jTextArea1) {
+        this.jTextArea1 = jTextArea1;
+    }
 }

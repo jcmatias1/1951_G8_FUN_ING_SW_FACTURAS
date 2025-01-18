@@ -1,23 +1,23 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+                UNIVERSIDAD-DE-LAS-FUERZAS-ARMADAS-ESPE
+                    CARRERA:INGENIERIA EN SOFTWARE
+Integrantes:ANDRADE URIEL, MATIAS JEAN, PLUA THOMAS     PERIODO:202451
+ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
+FECHA: 18/01/2025
+Tema: Menu Clientes 
+*/
 package proyectoFundamento;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author andra
- */
 public class MenuClientes extends javax.swing.JFrame {
 
     //atributos
-    private final List<Cliente> clientes = new ArrayList();
-    private static final String OPCION_DEFECTO = "Seleccione una opcion"; // opcion por defecto del JComboBox
-    private final MenuPrincipal menuPrincipal;
+    private List<Cliente> clientes = new ArrayList();
+    private static String OPCION_DEFECTO = "Seleccione una opcion"; // opcion por defecto del JComboBox
+    private MenuPrincipal menuPrincipal;
 
     /**
      * Creates new form MenuClientes
@@ -71,7 +71,7 @@ public class MenuClientes extends javax.swing.JFrame {
 
         campoApellido.setText(" ");
 
-        Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "Cedula", "RUC" }));
+        Identificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opcion", "Cedula", "RUC", "Pasaporte" }));
 
         campoIdentificacion.setText(" ");
 
@@ -209,17 +209,17 @@ public class MenuClientes extends javax.swing.JFrame {
             return; // Si la validación falla, no continúa
         }
         //<editor-fold defaultstate="collapsed" desc="----VARIABLES DEL METODO----">
-        String nombre = this.campoNombre.getText().trim();
-        String apellido = this.campoApellido.getText().trim();
-        String identificacion = this.campoIdentificacion.getText().trim();
-        String tipoIdentificacion = (String) this.Identificacion.getSelectedItem();
-        String direccion = this.campoDireccion.getText().trim();
-        String telefono = this.campoTelefono.getText().trim();
-        String correo = this.campoCorreo.getText().trim();
+        String nombre = this.getCampoNombre().getText().trim();
+        String apellido = this.getCampoApellido().getText().trim();
+        String identificacion = this.getCampoIdentificacion().getText().trim();
+        String tipoIdentificacion = (String) this.getIdentificacion().getSelectedItem();
+        String direccion = this.getCampoDireccion().getText().trim();
+        String telefono = this.getCampoTelefono().getText().trim();
+        String correo = this.getCampoCorreo().getText().trim();
         //</editor-fold>
 
         Cliente cliente = new Cliente(nombre, apellido, direccion, correo, identificacion, tipoIdentificacion, telefono);
-        clientes.add(cliente);
+        getClientes().add(cliente);
 
         // Mostrar mensaje de éxito
         JOptionPane.showMessageDialog(
@@ -235,26 +235,26 @@ public class MenuClientes extends javax.swing.JFrame {
 
     // Método para limpiar los campos
     private void limpiarCampos() {
-        this.campoNombre.setText("");
-        this.campoApellido.setText("");
-        this.campoDireccion.setText("");
-        this.campoCorreo.setText("");
-        this.campoIdentificacion.setText("");
-        this.campoTelefono.setText("");
-        this.Identificacion.setSelectedIndex(0);
+        this.getCampoNombre().setText("");
+        this.getCampoApellido().setText("");
+        this.getCampoDireccion().setText("");
+        this.getCampoCorreo().setText("");
+        this.getCampoIdentificacion().setText("");
+        this.getCampoTelefono().setText("");
+        this.getIdentificacion().setSelectedIndex(0);
     }
 
     //Metodo para validar campos 
     public boolean validarCampos() {
 
         //<editor-fold defaultstate="collapsed" desc="----VARIABLES DEL METODO----">
-        String nombre = this.campoNombre.getText().trim();
-        String apellido = this.campoApellido.getText().trim();
-        String identificacion = this.campoIdentificacion.getText().trim();
-        String tipoIdentificacion = (String) this.Identificacion.getSelectedItem();
-        String direccion = this.campoDireccion.getText().trim();
-        String telefono = this.campoTelefono.getText().trim();
-        String correo = this.campoCorreo.getText().trim();
+        String nombre = this.getCampoNombre().getText().trim();
+        String apellido = this.getCampoApellido().getText().trim();
+        String identificacion = this.getCampoIdentificacion().getText().trim();
+        String tipoIdentificacion = (String) this.getIdentificacion().getSelectedItem();
+        String direccion = this.getCampoDireccion().getText().trim();
+        String telefono = this.getCampoTelefono().getText().trim();
+        String correo = this.getCampoCorreo().getText().trim();
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="----VALIDACION DE CAMPOS----">
@@ -269,7 +269,7 @@ public class MenuClientes extends javax.swing.JFrame {
             return false;
         }
         //VALIDACION DE TIPO DE IDENTIFICACION COMBO_BOX
-        if (OPCION_DEFECTO.equals(tipoIdentificacion)) {
+        if (getOPCION_DEFECTO().equals(tipoIdentificacion)) {
             mostrarError("Por favor, seleccione un tipo de identificación válido.");
             return false;
         }
@@ -326,7 +326,7 @@ public class MenuClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         //BOTON REGRESAR 
         this.setVisible(false);
-        this.menuPrincipal.setVisible(true);
+        this.getMenuPrincipal().setVisible(true);
     }                                             
 
     //metodo para agregar cliente
@@ -462,14 +462,14 @@ public class MenuClientes extends javax.swing.JFrame {
      * @return the botonAceptar
      */
     public javax.swing.JButton getBotonAceptar() {
-        return botonAgregar;
+        return getBotonAgregar();
     }
 
     /**
      * @param botonAceptar the botonAceptar to set
      */
     public void setBotonAceptar(javax.swing.JButton botonAceptar) {
-        this.botonAgregar = botonAceptar;
+        this.setBotonAgregar(botonAceptar);
     }
 
     /**
@@ -490,14 +490,14 @@ public class MenuClientes extends javax.swing.JFrame {
      * @return the campoApellidos
      */
     public javax.swing.JTextField getCampoApellidos() {
-        return campoApellido;
+        return getCampoApellido();
     }
 
     /**
      * @param campoApellidos the campoApellidos to set
      */
     public void setCampoApellidos(javax.swing.JTextField campoApellidos) {
-        this.campoApellido = campoApellidos;
+        this.setCampoApellido(campoApellidos);
     }
 
     /**
@@ -546,14 +546,14 @@ public class MenuClientes extends javax.swing.JFrame {
      * @return the campoNombres
      */
     public javax.swing.JTextField getCampoNombres() {
-        return campoNombre;
+        return getCampoNombre();
     }
 
     /**
      * @param campoNombres the campoNombres to set
      */
     public void setCampoNombres(javax.swing.JTextField campoNombres) {
-        this.campoNombre = campoNombres;
+        this.setCampoNombre(campoNombres);
     }
 
     /**
@@ -582,5 +582,82 @@ public class MenuClientes extends javax.swing.JFrame {
      */
     public void setjPanel1(javax.swing.JPanel jPanel1) {
         this.jPanel1 = jPanel1;
+    }
+
+    /**
+     * @param clientes the clientes to set
+     */
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    /**
+     * @return the OPCION_DEFECTO
+     */
+    public static String getOPCION_DEFECTO() {
+        return OPCION_DEFECTO;
+    }
+
+    /**
+     * @param aOPCION_DEFECTO the OPCION_DEFECTO to set
+     */
+    public static void setOPCION_DEFECTO(String aOPCION_DEFECTO) {
+        OPCION_DEFECTO = aOPCION_DEFECTO;
+    }
+
+    /**
+     * @return the menuPrincipal
+     */
+    public MenuPrincipal getMenuPrincipal() {
+        return menuPrincipal;
+    }
+
+    /**
+     * @param menuPrincipal the menuPrincipal to set
+     */
+    public void setMenuPrincipal(MenuPrincipal menuPrincipal) {
+        this.menuPrincipal = menuPrincipal;
+    }
+
+    /**
+     * @return the botonAgregar
+     */
+    public javax.swing.JButton getBotonAgregar() {
+        return botonAgregar;
+    }
+
+    /**
+     * @param botonAgregar the botonAgregar to set
+     */
+    public void setBotonAgregar(javax.swing.JButton botonAgregar) {
+        this.botonAgregar = botonAgregar;
+    }
+
+    /**
+     * @return the campoApellido
+     */
+    public javax.swing.JTextField getCampoApellido() {
+        return campoApellido;
+    }
+
+    /**
+     * @param campoApellido the campoApellido to set
+     */
+    public void setCampoApellido(javax.swing.JTextField campoApellido) {
+        this.campoApellido = campoApellido;
+    }
+
+    /**
+     * @return the campoNombre
+     */
+    public javax.swing.JTextField getCampoNombre() {
+        return campoNombre;
+    }
+
+    /**
+     * @param campoNombre the campoNombre to set
+     */
+    public void setCampoNombre(javax.swing.JTextField campoNombre) {
+        this.campoNombre = campoNombre;
     }
 }

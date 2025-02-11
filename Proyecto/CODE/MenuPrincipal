@@ -1,16 +1,14 @@
 /*
-                UNIVERSIDAD-DE-LAS-FUERZAS-ARMADAS-ESPE
-                    CARRERA:INGENIERIA EN SOFTWARE
-Integrantes:ANDRADE URIEL, MATIAS JEAN, PLUA THOMAS     PERIODO:202451
-ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
-FECHA: 18/01/2025
-Tema: Menu Principal
-*/
-package proyectoFundamento;
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package Sprint1;
 
-import javax.swing.*;
-
-public class MenuPrincipal extends javax.swing.JFrame {
+/**
+ *
+ * @author VivoBook
+ */
+public final class MenuPrincipal extends javax.swing.JFrame {
 
     //atributos 
     private MenuClientes menuClientes; // Instancia compartida de MenuClientes
@@ -42,44 +40,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        Opcion = new javax.swing.JTextField();
-        Salir = new javax.swing.JButton();
-        Aceptar = new javax.swing.JButton();
+        botonPedidos = new javax.swing.JButton();
+        botonCliente = new javax.swing.JButton();
+        botonRegistro = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAlwaysOnTop(true);
+        setPreferredSize(new java.awt.Dimension(350, 300));
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Administracion de Pedidos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 24))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Administracion de Pedidos");
 
-        jLabel1.setText("Ingrese una opcion: ");
-
-        jLabel2.setText("1. Pedidos");
-
-        jLabel3.setText("2. Clientes");
-
-        jLabel4.setText("3. Reportes");
-
-        Opcion.addActionListener(new java.awt.event.ActionListener() {
+        botonPedidos.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        botonPedidos.setText("Ingresar Pedidos");
+        botonPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OpcionActionPerformed(evt);
+                botonPedidosActionPerformed(evt);
             }
         });
 
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
+        botonCliente.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        botonCliente.setText("Ingresar Cliente");
+        botonCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
+                botonClienteActionPerformed(evt);
             }
         });
 
-        Aceptar.setText("Aceptar");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        botonRegistro.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        botonRegistro.setText("Mostrar Registro");
+        botonRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                botonRegistroActionPerformed(evt);
             }
         });
 
@@ -88,40 +80,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Opcion)
-                .addGap(31, 31, 31))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(63, 63, 63))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(Aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(botonCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Opcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Salir)
-                    .addComponent(Aceptar))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,59 +111,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(366, 339));
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void OpcionActionPerformed(java.awt.event.ActionEvent evt) {                                       
-        // TODO add your handling code here:
-        getAceptar().doClick(); //Al dar enter en el campo de Opcion se cliclea automaticamente el boton aceptar, ejecutando el metodo AceptarActionPerformed
-    }                                      
-
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
-        //BOTON Aceptar
-        //Manejo de try catch para evitar la entrada de numeros
-        try {
-            switch (Integer.parseInt(this.getOpcion().getText())) {
-                case 1 -> {
-                    getMenuPedidos().setVisible(true);
-                    this.setVisible(false);
-                }
-                case 2 -> {
-                    getMenuClientes().setVisible(true);
-                    this.setVisible(false);
-                }
-                case 3 -> {
-                    getMenuReporte().setVisible(true);
-                    this.setVisible(false);
-                }
-                default -> {
-                    JOptionPane.showMessageDialog(this, "Opcion no valida, ingrese una opcion entre el 1 y 3 ", "Opcion Invalida", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-            getOpcion().setText("");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Opcion no valida", "Entrada Invalida", JOptionPane.ERROR_MESSAGE);
-            getOpcion().setText("");
+    private void botonPedidosActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // Verificar si el botón que activó el evento es el correcto
+        if (evt.getSource().equals(botonPedidos)) {
+            // Mostrar MenuClientes
+            menuPedidos.setVisible(true);
+            // Ocultar la ventana actual
+            this.setVisible(false);
         }
-    }                                       
+    }                                            
 
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
-        System.exit(0);
-    }                                     
+    private void botonClienteActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // Verificar si el botón que activó el evento es el correcto
+        if (evt.getSource().equals(botonCliente)) {
+            // Mostrar MenuClientes
+            menuClientes.setVisible(true);
+            // Ocultar la ventana actual
+            this.setVisible(false);
+        }
+    }                                            
+
+    private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // Verificar si el botón que activó el evento es el correcto
+        if (evt.getSource().equals(botonRegistro)) {
+            // Mostrar MenuClientes
+            menuReporte.setVisible(true);
+            // Ocultar la ventana actual
+            this.setVisible(false);
+        }
+    }                                             
 
     /**
      * @param args the command line arguments
@@ -214,13 +186,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JTextField Opcion;
-    private javax.swing.JButton Salir;
+    private javax.swing.JButton botonCliente;
+    private javax.swing.JButton botonPedidos;
+    private javax.swing.JButton botonRegistro;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration                   
 
@@ -267,45 +236,45 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * @return the Aceptar
+     * @return the jButton1
      */
-    public javax.swing.JButton getAceptar() {
-        return Aceptar;
+    public javax.swing.JButton getjButton1() {
+        return botonRegistro;
     }
 
     /**
-     * @param Aceptar the Aceptar to set
+     * @param jButton1 the jButton1 to set
      */
-    public void setAceptar(javax.swing.JButton Aceptar) {
-        this.Aceptar = Aceptar;
+    public void setjButton1(javax.swing.JButton jButton1) {
+        this.botonRegistro = jButton1;
     }
 
     /**
-     * @return the Opcion
+     * @return the jButton2
      */
-    public javax.swing.JTextField getOpcion() {
-        return Opcion;
+    public javax.swing.JButton getjButton2() {
+        return botonPedidos;
     }
 
     /**
-     * @param Opcion the Opcion to set
+     * @param jButton2 the jButton2 to set
      */
-    public void setOpcion(javax.swing.JTextField Opcion) {
-        this.Opcion = Opcion;
+    public void setjButton2(javax.swing.JButton jButton2) {
+        this.botonPedidos = jButton2;
     }
 
     /**
-     * @return the Salir
+     * @return the jButton3
      */
-    public javax.swing.JButton getSalir() {
-        return Salir;
+    public javax.swing.JButton getjButton3() {
+        return botonCliente;
     }
 
     /**
-     * @param Salir the Salir to set
+     * @param jButton3 the jButton3 to set
      */
-    public void setSalir(javax.swing.JButton Salir) {
-        this.Salir = Salir;
+    public void setjButton3(javax.swing.JButton jButton3) {
+        this.botonCliente = jButton3;
     }
 
     /**
@@ -320,61 +289,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public void setjLabel1(javax.swing.JLabel jLabel1) {
         this.jLabel1 = jLabel1;
-    }
-
-    /**
-     * @return the jLabel2
-     */
-    public javax.swing.JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    /**
-     * @param jLabel2 the jLabel2 to set
-     */
-    public void setjLabel2(javax.swing.JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
-
-    /**
-     * @return the jLabel3
-     */
-    public javax.swing.JLabel getjLabel3() {
-        return jLabel3;
-    }
-
-    /**
-     * @param jLabel3 the jLabel3 to set
-     */
-    public void setjLabel3(javax.swing.JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
-
-    /**
-     * @return the jLabel4
-     */
-    public javax.swing.JLabel getjLabel4() {
-        return jLabel4;
-    }
-
-    /**
-     * @param jLabel4 the jLabel4 to set
-     */
-    public void setjLabel4(javax.swing.JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
-    }
-
-    /**
-     * @return the jPanel1
-     */
-    public javax.swing.JPanel getjPanel1() {
-        return jPanel1;
-    }
-
-    /**
-     * @param jPanel1 the jPanel1 to set
-     */
-    public void setjPanel1(javax.swing.JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
     }
 }

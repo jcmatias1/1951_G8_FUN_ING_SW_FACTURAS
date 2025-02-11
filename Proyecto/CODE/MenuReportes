@@ -6,7 +6,7 @@ ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
 FECHA: 18/01/2025
 Tema: Ventana Reportes 
 */
-package proyectoFundamento;
+package Sprint1;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

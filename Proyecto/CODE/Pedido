@@ -6,7 +6,7 @@ ASIGNATURA:Fundamentos de Ingenieria de Software        NRC:1967
 FECHA: 18/01/2025
 Tema: Clase Pedido
 */
-package proyectoFundamento;
+package Sprint1;
 
 import java.util.HashSet;
 import java.util.Set;
